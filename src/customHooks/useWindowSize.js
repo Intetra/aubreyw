@@ -1,11 +1,17 @@
 import React, { useState, useLayoutEffect } from 'react'
+import { Dimensions } from 'react-native'
+
+//mock the necessary browser environment variables, since react native doesnt provide them
+window.addEventListener = x => x
+window.removeEventListener = x => x
 
 export default function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
   useLayoutEffect(
     () => {
+      console.log("Layout effect")
       function updateSize() {
-        setSize([window.innerWidth, window.innerHeight]);
+        setSize([Dimensions.get('window').width, Dimensions.get('window').height])
       }
       window.addEventListener("resize", updateSize);
       updateSize();
@@ -17,8 +23,8 @@ export default function useWindowSize() {
 function ShowWindowDimensions(props) {
   const [width, height] = useWindowSize();
   return (
-    <span>
+    <Text style={{marginTop: 20}}>
       Window size: {width} x {height}
-    </span>
+    </Text>
   );
 }
