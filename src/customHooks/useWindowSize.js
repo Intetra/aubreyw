@@ -9,7 +9,6 @@ export default function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
   useLayoutEffect(
     () => {
-      console.log("Layout effect")
       function updateSize() {
         setSize([Dimensions.get('window').width, Dimensions.get('window').height])
       }
