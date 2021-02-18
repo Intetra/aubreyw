@@ -1,12 +1,19 @@
-import React from "react";
-import { View, StyleSheet, Image, Text, ActivityIndicator } from "react-native";
+import React, { useEffect } from "react";
+import { View, StyleSheet, Text, ActivityIndicator, Animated, Image } from "react-native";
 import useWindowSize from "../customHooks/useWindowSize";
+import spinningImage from "../customHooks/spinningImage"
 
-const Template = (device) => {
+const Template = (device, spin) => {
+  const { moon, container, sky, ground } = styles
   console.log(device)
-  const { sky, ground, moon, container } = styles
+  console.log(spin)
+  const moonSource = require(`../images/${device}/moon.png`)
   return (
     <View style={container}>
+      <Animated.Image
+        source={moonSource}
+        style={[moon, {transform: [{rotate: spin}]}]}
+      />
       <Image
         source={require(`../images/${device}/sky.png`)}
         style={sky}
@@ -15,15 +22,13 @@ const Template = (device) => {
         source={require(`../images/${device}/ground.png`)}
         style={ground}
       />
-      <Image
-        source={require(`../images/${device}/moon.png`)}
-        style={moon}
-      />
     </View>
   );
 };
 
 const Background = () => {
+  const spin = spinningImage()
+
   const { container, moon, test } = styles;
   const [width, height] = useWindowSize();
   console.log(width);
@@ -31,13 +36,13 @@ const Background = () => {
   if (width == 0) {
     return <ActivityIndicator />;
   } else if (width <= 576) {
-    return Template("phone");
+    return Template("phone", spin);
   } else if (width <= 768) {
-    return Template("ipad");
+    return Template("ipad", spin);
   } else if (width <= 1920) {
-    return Template("desktop");
+    return Template("desktop", spin);
   } else if (width <= 3840 || width > 3840) {
-    return Template("4k");
+    return Template("4k", spin);
   } else {
     console.log("Error");
     return Template("Error Determining Screen Size");
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
   },
   moon: {
     position: "absolute",
-    width: "90%",
+    width: "100%",
     height: "100%",
     resizeMode: "contain",
     zIndex: 2,
