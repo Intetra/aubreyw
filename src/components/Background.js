@@ -43,12 +43,12 @@ const Template = (device, spin) => {
           style={ground}
         />
       </View>
-      <Animated.View style={[moonHolder, {transform: [{rotate: spin}]}]}>
-        <Image
+      <View style={moonHolder}>
+        <Animated.Image
           source={moonSource}
-          style={moon}
+          style={[moon, {transform: [{rotate: spin}]}]}
         />
-      </Animated.View>
+      </View>
       <View style={skyHolder}>
         <Image
           source={skySource}
@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    overflow: 'hidden'
   },
   skyHolder: {
     position: "absolute",
@@ -120,9 +121,10 @@ const styles = StyleSheet.create({
     elevation: 1
   },
   moon: {
-    width: "100%",
-    height: "100%",
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    height: '100%',
+    width: '100%'
+
   },
   test: {
     backgroundColor: "gray",
