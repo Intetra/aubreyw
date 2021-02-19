@@ -83,10 +83,9 @@ const Background = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    position: "absolute",
+    width: "100%",
+    height: "100%",
     overflow: 'hidden'
   },
   skyHolder: {
