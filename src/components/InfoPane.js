@@ -2,20 +2,23 @@ import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 
 const InfoPane = () => {
-  const { container, splashText1, splashText2, splashImage} = styles
+  const { container, titleLine, splashImage, splashImageHolder, nameLine} = styles
   return (
     <View style={container}>
-      <Text style={splashText1}>
-        I'm Aubrey,
-      </Text>
-      <Text style={splashText2}>
-        a software developer
-      </Text>
       <Image
-        source={require('../images/selfie.jpg')}
-        style={splashImage}
+        source={require('../images/nameLine.png')}
+        style={nameLine}
       />
-
+      <Image
+        source={require('../images/titleLine.png')}
+        style={titleLine}
+      />
+      <View style={splashImageHolder}>
+        <Image
+          source={require('../images/selfie.png')}
+          style={splashImage}
+        />
+      </View>
     </View>
   )
 }
@@ -28,18 +31,28 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent: 'center'
   },
-  splashText1: {
-    fontSize: 36,
-    color: 'white'
+  nameLine: {
+    height: 120,
+    width: '60%',
+    minWidth: 120,
+    resizeMode: 'contain'
   },
-  splashText2: {
-    fontSize: 24,
-    color: 'white'
+  titleLine: {
+    height: 55,
+    width: '50%',
+    minWidth: 100,
+    resizeMode: 'contain'
   },
   splashImage: {
-    height: '50%',
-    width: '50%',
+    height: '100%',
+    width: '100%',
     resizeMode: 'contain'
+  },
+  splashImageHolder: {
+    padding: 20,
+    height: 400,
+    maxHeight: '50%',
+    width: '70%',
   }
 })
 
