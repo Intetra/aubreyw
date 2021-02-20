@@ -2,22 +2,51 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import Background from "../components/Background";
 import InfoPane from "../components/InfoPane";
-import BottomNav from "../components/BottomNav"
+import BottomNav from "../components/BottomNav";
+import NavMenu from "../components/NavMenu";
+import WorkPane from "../components/WorkPane";
 
 const IndexScreen = () => {
-  const { container, background, infoPane } = styles;
-  const [pane, setPane] = useState("about")
+  const { container, background, navMenu, middle } = styles;
+  const [pane, setPane] = useState("work");
 
   const updatePane = (prop) => {
-      setPane(prop)
-  }
+    setPane(prop);
+  };
 
+  const paneHandler = (pane) => {
+    if (pane) {
+      if (pane === "about") {
+        return <InfoPane style={middle} />
+      } else if (pane === "work") {
+        return (
+          <WorkPane
+            updatePane={updatePane}
+            style={middle}
+          />
+        )
+      } else if (pane === "menu") {
+        return (
+          <NavMenu
+            updatePane={updatePane}
+            style={navMenu}
+          />
+        )
+      }
+    } else {
+      return console.log('No Pane')
+    }
+  };
 
   return (
     <View style={container}>
-      <Background />
-      <InfoPane />
-      <BottomNav updatePane={updatePane} />
+      <Background style={background} />
+      {paneHandler(pane)}
+      <BottomNav
+        updatePane={updatePane}
+        style={middle}
+
+      />
     </View>
   );
 };
@@ -30,15 +59,18 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   background: {
-    position: 'absolute',
-    zIndex: 0
+    position: "absolute",
+    elevation: 0,
+    zIndex: 0,
   },
-  infoPane: {
-    position: 'absolute',
-    zIndex: 1
+  middle: {
+    position: "absolute",
+    elevation: 1,
+    zIndex: 1,
   },
-  bottomNav: {
+  navMenu: {
     position: 'absolute',
+    elevation: 2,
     zIndex: 2
   }
 });

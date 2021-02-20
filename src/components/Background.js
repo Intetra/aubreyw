@@ -1,68 +1,84 @@
-import React, { useEffect } from "react";
-import { View, StyleSheet, Text, ActivityIndicator, Animated, Image } from "react-native";
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  ActivityIndicator,
+  Animated,
+  Image,
+} from "react-native";
 import useWindowSize from "../customHooks/useWindowSize";
 import spinningImage from "../customHooks/spinningImage";
-import Images from '../images/index'
-
-
+import Images from "../images/index";
 
 const Template = (device, spin) => {
-  const { moon, moonHolder, container, sky, skyHolder, ground, groundHolder } = styles
-  const { bigGround, bigMoon, bigSky, desktopGround, desktopMoon, desktopSky,
-    ipadGround, ipadMoon, ipadSky, phoneGround, phoneMoon, phoneSky } = Images
+  const {
+    moon,
+    moonHolder,
+    container,
+    sky,
+    skyHolder,
+    ground,
+    groundHolder,
+  } = styles;
+  const {
+    bigGround,
+    bigMoon,
+    bigSky,
+    desktopGround,
+    desktopMoon,
+    desktopSky,
+    ipadGround,
+    ipadMoon,
+    ipadSky,
+    phoneGround,
+    phoneMoon,
+    phoneSky,
+  } = Images;
 
-  let groundSource
-  let moonSource
-  let skySource
+  let groundSource;
+  let moonSource;
+  let skySource;
 
   if (device === "phone") {
-    groundSource = phoneGround
-    moonSource = phoneMoon
-    skySource = phoneSky
+    groundSource = phoneGround;
+    moonSource = phoneMoon;
+    skySource = phoneSky;
   } else if (device === "ipad") {
-    groundSource = ipadGround
-    moonSource = ipadMoon
-    skySource = ipadSky
+    groundSource = ipadGround;
+    moonSource = ipadMoon;
+    skySource = ipadSky;
   } else if (device === "desktop") {
-    groundSource = desktopGround
-    moonSource = desktopMoon
-    skySource = desktopSky
+    groundSource = desktopGround;
+    moonSource = desktopMoon;
+    skySource = desktopSky;
   } else if (device === "4k") {
-    groundSource = bigGround
-    moonSource = bigMoon
-    skySource = bigSky
+    groundSource = bigGround;
+    moonSource = bigMoon;
+    skySource = bigSky;
   } else {
-    return device
+    return device;
   }
 
   return (
     <View style={container}>
       <View style={groundHolder}>
-        <Image
-          source={groundSource}
-          style={ground}
-        />
+        <Image source={groundSource} style={ground} />
       </View>
       <View style={moonHolder}>
         <Animated.Image
           source={moonSource}
-          style={[moon, {transform: [{rotate: spin}]}]}
+          style={[moon, { transform: [{ rotate: spin }] }]}
         />
       </View>
       <View style={skyHolder}>
-        <Image
-          source={skySource}
-          style={sky}
-        />
+        <Image source={skySource} style={sky} />
       </View>
     </View>
   );
 };
 
 const Background = () => {
-  const spin = spinningImage()
-
-  const { container, moon, test } = styles;
+  const spin = spinningImage();
   const [width, height] = useWindowSize();
 
   if (width == 0) {
@@ -86,70 +102,51 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     height: "100%",
-    overflow: 'hidden'
+    overflow: "hidden",
   },
   skyHolder: {
     position: "absolute",
     width: "100%",
     height: "100%",
     zIndex: 0,
-    elevation: 0
+    elevation: 0,
   },
   sky: {
     width: "100%",
     height: "100%",
-    resizeMode: "cover"
+    resizeMode: "cover",
   },
   groundHolder: {
     position: "absolute",
     width: "100%",
     height: "100%",
     zIndex: 2,
-    elevation: 2
+    elevation: 2,
   },
   ground: {
     width: "100%",
     height: "100%",
-    resizeMode: "cover"
+    resizeMode: "cover",
   },
   moonHolder: {
     position: "absolute",
     width: "100%",
     height: "100%",
     zIndex: 1,
-    elevation: 1
+    elevation: 1,
   },
   moon: {
-    resizeMode: 'contain',
-    height: '100%',
-    width: '100%'
-
+    resizeMode: "contain",
+    height: "100%",
+    width: "100%",
   },
   test: {
     backgroundColor: "gray",
     position: "absolute",
     color: "red",
     width: "100%",
-    height: "100%"
+    height: "100%",
   },
 });
 
 export default Background;
-
-
-/*
-<View style={container}>
-  <Animated.Image
-    source={phoneMoonSource}
-    style={[moon, {transform: [{rotate: spin}]}]}
-  />
-  <Image
-    source={sky}
-    style={sky}
-  />
-  <Image
-    source={require(`../images/${device}/ground.png`)}
-    style={ground}
-  />
-</View>
-*/
