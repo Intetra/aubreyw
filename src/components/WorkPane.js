@@ -11,16 +11,16 @@ const Sample = () => {
 };
 
 const WorkPane = () => {
-  const { sampleHolder, container, mainTitle } = styles;
+  const { contentContainer, scrollView, topTitle, border } = styles;
   return (
-    <View style={container}>
-      <Text style={mainTitle}>Code Samples</Text>
+    <View style={border}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={sampleHolder}
-
+        contentContainerStyle={contentContainer}
+        style={scrollView}
       >
+        <Text style={topTitle}>Code Samples</Text>
         <Sample />
         <Sample />
         <Sample />
@@ -29,48 +29,60 @@ const WorkPane = () => {
         <Sample />
         <Sample />
         <Sample />
+        <Sample />
+        <Sample />
+        <Sample />
+        <Sample />
+        <Sample />
+        <Sample />
+        <Sample />
+        <Sample />
+
       </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    width: '80%',
-    height: '80%',
-    overflow: 'hidden',
+  border: {
+    alignSelf: 'center',
+    borderWidth: 5,
+    borderRadius: 50,
+    borderColor: 'white',
     position: 'absolute',
-    backgroundColor: 'blue'
+    height: '80%',
+    width: '80%',
+    maxWidth: 500,
+    maxHeight: 500,
+    padding: 10
   },
-  mainTitle: {
-    color: "white",
+  scrollView: {
+    height: 500,
+
+
   },
-  sampleHolder: {
-    height: "70%",
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: 'wrap',
-    alignItems: "center",
-    justifyContent: "center",
-    overflow:'scroll',
-    flexGrow: 1
+  contentContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 50
   },
   sample: {
-    height: 200,
-    width: '100%',
+    height: 450,
+    width: 450,
+    maxWidth: '100%',
+    maxHeight: '100%',
     backgroundColor: "white",
     borderRadius: 50,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    marginBottom: 20
   },
+  topTitle: {
+    color: 'white',
+    margin: 20
+  }
 });
 
 export default WorkPane;
