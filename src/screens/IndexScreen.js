@@ -9,7 +9,7 @@ import Constants from 'expo-constants';
 
 const IndexScreen = () => {
   const { container, background, navMenu, middle } = styles;
-  const [pane, setPane] = useState("work");
+  const [pane, setPane] = useState("about");
 
   const updatePane = (prop) => {
     setPane(prop);
