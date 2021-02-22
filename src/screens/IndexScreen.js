@@ -5,6 +5,7 @@ import InfoPane from "../components/InfoPane";
 import BottomNav from "../components/BottomNav";
 import NavMenu from "../components/NavMenu";
 import WorkPane from "../components/WorkPane";
+import Constants from 'expo-constants';
 
 const IndexScreen = () => {
   const { container, background, navMenu, middle } = styles;
@@ -56,7 +57,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: Constants.statusBarHeight,
   },
   background: {
     position: "absolute",

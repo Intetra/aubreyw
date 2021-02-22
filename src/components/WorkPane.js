@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome5 } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import * as Linking from 'expo-linking'
 
 
 
 const Sample = (props) => {
-  const { title, image, icon } = props;
-  const { sample, sampleImage, sampleIcon, sampleTitle } = styles;
+  const { title, image, icon, link } = props;
+  const { sample, sampleImage, sampleIcon, sampleTitle, linkStyle } = styles;
   const imageHandler = () => {
     if (image) {
       return (
@@ -28,10 +28,6 @@ const Sample = (props) => {
         return (
           <AntDesign style={sampleIcon} name="API" size={48} color="white" />
         )
-      } else if (icon === 'rnStarter') {
-        return (
-          <MaterialCommunityIcons style={sampleIcon} name="puzzle-check" size={48} color="white" />
-        )
       } else if (icon === 'flaskBlog') {
         return (
           <Entypo style={sampleIcon} name="lab-flask" size={48} color="white" />
@@ -40,10 +36,29 @@ const Sample = (props) => {
     }
   }
 
+  const linkHandler = () => {
+    if (link === 'website') {
+      return Linking.openURL('https://github.com/Intetra/aubreyw')
+    } else if (link === 'apiLink') {
+      return Linking.openURL('https://github.com/Intetra/Custom-Express-API')
+    } else if (link === 'rnBlogLink') {
+      return Linking.openURL('https://github.com/Intetra/blogs')
+    } else if (link === 'flaskBlogLink') {
+      return Linking.openURL('https://github.com/Intetra/flask-blog-app')
+    } else return null
+  }
+
   return (
     <View style={sample}>
       <Text style={sampleTitle}>{title}</Text>
       {imageHandler()}
+      <TouchableOpacity
+        onPress={() => linkHandler()}
+      >
+        <Text style={linkStyle}>
+          Github
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -71,26 +86,29 @@ const WorkPane = () => {
         contentContainerStyle={contentContainer}
         style={scrollView}
       >
-        <Text style={topTitle}>Code Samples</Text>
+        <Image
+          source={require('../images/codeSamples.png')}
+          style={topTitle}
+        />
         <Sample
           title="This website"
           image={require('../images/ipad/moon.png')}
+          link='website'
         />
         <Sample
-          title="Custom API"
+          title="Custom Express API"
           icon='api'
+          link='apiLink'
         />
         <Sample
           title="React Native Blog"
           icon='blog'
-        />
-        <Sample
-          title="React Native Course Starter"
-          icon='rnStarter'
+          link='rnBlogLink'
         />
         <Sample
           title="Python/Flask Blog"
           icon='flaskBlog'
+          link='flaskBlogLink'
         />
 
       </ScrollView>
@@ -123,7 +141,9 @@ const styles = StyleSheet.create({
   topTitle: {
     position: "relative",
     marginVertical: 30,
-    color: "white"
+    height: 60,
+    width: '100%',
+    resizeMode: 'contain'
   },
   topGradient: {
     position: "absolute",
@@ -163,9 +183,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 30,
+    padding: 10
   },
   sampleTitle: {
-    color: 'white'
+    color: 'white',
+    fontSize: 28,
+    textAlign: 'center'
   },
   sampleImage: {
     width: '100%',
@@ -173,8 +196,10 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   sampleIcon: {
-    marginTop: 40
-
+    marginVertical: 40
+  },
+  linkStyle: {
+    color: 'white'
   }
 });
 
