@@ -1,63 +1,71 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { FontAwesome5 } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-import * as Linking from 'expo-linking'
-
-
+import { FontAwesome5 } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import * as Linking from "expo-linking";
 
 const Sample = (props) => {
   const { title, image, icon, link } = props;
-  const { sample, sampleImage, sampleIcon, sampleTitle, linkStyle } = styles;
+  const {
+    sample,
+    sampleImage,
+    sampleIcon,
+    sampleTitle,
+    linkStyle,
+    linkHolderStyle,
+  } = styles;
   const imageHandler = () => {
     if (image) {
-      return (
-        <Image
-          source={image}
-          style={sampleImage}
-        />
-      )
+      return <Image source={image} style={sampleImage} />;
     } else if (icon) {
-      if (icon === 'blog') {
+      if (icon === "blog") {
         return (
-          <FontAwesome5 style={sampleIcon} name="blog" size={48} color="white" />
-        )
-      } else if (icon === 'api') {
+          <FontAwesome5
+            style={sampleIcon}
+            name="blog"
+            size={48}
+            color="white"
+          />
+        );
+      } else if (icon === "api") {
         return (
           <AntDesign style={sampleIcon} name="API" size={48} color="white" />
-        )
-      } else if (icon === 'flaskBlog') {
+        );
+      } else if (icon === "flaskBlog") {
         return (
           <Entypo style={sampleIcon} name="lab-flask" size={48} color="white" />
-        )
+        );
       }
     }
-  }
+  };
 
   const linkHandler = () => {
-    if (link === 'website') {
-      return Linking.openURL('https://github.com/Intetra/aubreyw')
-    } else if (link === 'apiLink') {
-      return Linking.openURL('https://github.com/Intetra/Custom-Express-API')
-    } else if (link === 'rnBlogLink') {
-      return Linking.openURL('https://github.com/Intetra/blogs')
-    } else if (link === 'flaskBlogLink') {
-      return Linking.openURL('https://github.com/Intetra/flask-blog-app')
-    } else return null
-  }
+    if (link === "website") {
+      return Linking.openURL("https://github.com/Intetra/aubreyw");
+    } else if (link === "apiLink") {
+      return Linking.openURL("https://github.com/Intetra/Custom-Express-API");
+    } else if (link === "rnBlogLink") {
+      return Linking.openURL("https://github.com/Intetra/blogs");
+    } else if (link === "flaskBlogLink") {
+      return Linking.openURL("https://github.com/Intetra/flask-blog-app");
+    } else return null;
+  };
 
   return (
     <View style={sample}>
       <Text style={sampleTitle}>{title}</Text>
       {imageHandler()}
-      <TouchableOpacity
-        onPress={() => linkHandler()}
-      >
-        <Text style={linkStyle}>
-          Github
-        </Text>
+      <TouchableOpacity style={linkHolderStyle} onPress={() => linkHandler()}>
+        <Text style={linkStyle}>Github</Text>
       </TouchableOpacity>
     </View>
   );
@@ -86,31 +94,19 @@ const WorkPane = () => {
         contentContainerStyle={contentContainer}
         style={scrollView}
       >
-        <Image
-          source={require('../images/codeSamples.png')}
-          style={topTitle}
-        />
+        <Image source={require("../images/codeSamples.png")} style={topTitle} />
         <Sample
           title="This website"
-          image={require('../images/ipad/moon.png')}
-          link='website'
+          image={require("../images/ipad/moon.png")}
+          link="website"
         />
-        <Sample
-          title="Custom Express API"
-          icon='api'
-          link='apiLink'
-        />
-        <Sample
-          title="React Native Blog"
-          icon='blog'
-          link='rnBlogLink'
-        />
+        <Sample title="Custom Express API" icon="api" link="apiLink" />
+        <Sample title="React Native Blog" icon="blog" link="rnBlogLink" />
         <Sample
           title="Python/Flask Blog"
-          icon='flaskBlog'
-          link='flaskBlogLink'
+          icon="flaskBlog"
+          link="flaskBlogLink"
         />
-
       </ScrollView>
       <LinearGradient
         pointerEvents={"box-none"}
@@ -142,8 +138,8 @@ const styles = StyleSheet.create({
     position: "relative",
     marginVertical: 30,
     height: 60,
-    width: '100%',
-    resizeMode: 'contain'
+    width: "100%",
+    resizeMode: "contain",
   },
   topGradient: {
     position: "absolute",
@@ -151,7 +147,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 35,
-    zIndex: 1
+    zIndex: 1,
   },
   bottomGradient: {
     position: "absolute",
@@ -175,7 +171,7 @@ const styles = StyleSheet.create({
     width: 450,
     maxWidth: "100%",
     maxHeight: "100%",
-    backgroundColor: 'black',
+    backgroundColor: "black",
     backgroundColor: "rgba(0,0,0,0.5)",
     borderRadius: 30,
     display: "flex",
@@ -183,24 +179,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 30,
-    padding: 10
+    padding: 10,
   },
   sampleTitle: {
-    color: 'white',
-    fontSize: 28,
-    textAlign: 'center'
+    color: "white",
+    fontSize: 38,
+    textAlign: "center",
   },
   sampleImage: {
-    width: '100%',
-    height: '50%',
-    resizeMode: 'contain'
+    width: "100%",
+    height: "50%",
+    resizeMode: "contain",
   },
   sampleIcon: {
-    marginVertical: 40
+    marginVertical: 40,
+  },
+  linkHolderStyle: {
+    backgroundColor: "black",
+    backgroundColor: "rgba(0,0,0,0.25)",
+    padding: 10,
+    borderRadius: 20
   },
   linkStyle: {
-    color: 'white'
-  }
+    fontSize: 34,
+    color: "white",
+  },
 });
 
 export default WorkPane;

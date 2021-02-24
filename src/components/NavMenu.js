@@ -25,6 +25,7 @@ const NavMenu = (props) => {
 
 const styles = StyleSheet.create({
   container: {
+    position: 'absolute',
     backgroundColor: "black",
     backgroundColor: "rgba( 0, 0, 0, 0.5)",
     width: "100%",
@@ -33,12 +34,15 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    zIndex: 0
   },
   buttonHolder: {
+    position: 'relative',
     width: "50%",
     maxHeight: "30%",
     padding: 20,
     minHeight: "20%",
+    zIndex: 1
   },
   button: {
     width: "100%",
