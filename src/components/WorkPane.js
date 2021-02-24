@@ -120,12 +120,13 @@ const WorkPane = () => {
 const styles = StyleSheet.create({
   border: {
     alignSelf: "center",
+    marginBottom:60,
     borderWidth: 5,
     borderRadius: 30,
     borderColor: "white",
     position: "absolute",
-    height: "80%",
-    width: "80%",
+    height: "75%",
+    width: "75%",
     maxWidth: 500,
     maxHeight: 500,
     padding: 10,

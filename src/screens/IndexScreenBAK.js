@@ -40,8 +40,37 @@ const IndexScreen = () => {
     }
   };
 
+  const getContainerStyle = () => {
+    const iosChecker = false
+    if (Platform.OS === 'ios') {
+        iosChecker = true
+    }
+    if (iosChecker) {
+      return {
+        flex: 1,
+        height: '100%',
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: Constants.statusBarHeight,
+
+      }
+    } else if (!iosChecker) {
+      return {
+        flex: 1,
+        height: '100%',
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: Constants.statusBarHeight,
+      }
+    } else {
+      return console.error('Failed at iosChecker')
+    }
+  }
+
   return (
-    <View style={container}>
+    <View style={getContainerStyle()}>
       <Background style={background} />
       {paneHandler(pane)}
       <BottomNav
@@ -59,7 +88,8 @@ const styles = StyleSheet.create({
     height: '100%',
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingTop: Constants.statusBarHeight,
   },
   background: {
     position: "absolute",
