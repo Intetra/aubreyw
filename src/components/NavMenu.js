@@ -20,7 +20,7 @@ const NavMenu = (props) => {
         onPress={() => updatePane('work')}
       >
         <Text style={button}>
-        Code Samples
+          Work
         </Text>
       </TouchableOpacity>
     </View>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     height: 50,
     fontSize: 38,
     color: 'white',
-    resizeMode: "contain",
+    flexWrap:'nowrap'
   },
   line: {
     borderBottomColor: "white",
