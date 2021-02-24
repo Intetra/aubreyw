@@ -1,1 +1,1 @@
-This website is a universal web application built using react native.
+This website: (https://aubreyw.net), is a simple react native application built using expo. It displays my portfolio of code samples. It is served by apache from a google cloud platform virtual machine.
