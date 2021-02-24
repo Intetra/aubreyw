@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import Background from "../components/Background";
 import InfoPane from "../components/InfoPane";
 import BottomNav from "../components/BottomNav";
 import NavMenu from "../components/NavMenu";
 import WorkPane from "../components/WorkPane";
-import Constants from 'expo-constants';
-import { Platform } from 'react-native'
 
 const IndexScreen = () => {
-  const { container, iosContainer, background, navMenu, middle, bottomNav } = styles;
+  const { container, background, navMenu, middle, bottomNav } = styles;
   const [pane, setPane] = useState("about");
 
   const updatePane = (prop) => {
@@ -40,8 +38,14 @@ const IndexScreen = () => {
     }
   };
 
+  const webWidth = Dimensions.get('window').width
+  const webHeight = Dimensions.get('window').height
+  const webDimensions = {
+    height: webHeight,
+    width: webWidth
+  }
   return (
-    <View style={container}>
+    <View style={[container, webDimensions]}>
       <Background style={background} />
       {paneHandler(pane)}
       <BottomNav
