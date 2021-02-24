@@ -159,7 +159,8 @@ const styles = StyleSheet.create({
   scrollView: {
     position: "absolute",
     height: 500,
-    top: 10,
+    width: '100%',
+    top: 10
   },
   contentContainer: {
     justifyContent: "center",
@@ -169,8 +170,8 @@ const styles = StyleSheet.create({
   sample: {
     height: 450,
     width: 450,
-    maxWidth: "100%",
-    maxHeight: "100%",
+    maxWidth: "90%",
+    maxHeight: "90%",
     backgroundColor: "black",
     backgroundColor: "rgba(0,0,0,0.5)",
     borderRadius: 30,
@@ -179,12 +180,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 30,
-    padding: 10,
+    padding: 10
   },
   sampleTitle: {
     color: "white",
-    fontSize: 38,
+    fontSize: 36,
     textAlign: "center",
+    width: '90%',
+    flexShrink: 1
   },
   sampleImage: {
     width: "100%",
@@ -201,7 +204,7 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   linkStyle: {
-    fontSize: 34,
+    fontSize: 32,
     color: "white",
   },
 });

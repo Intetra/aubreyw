@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 const NavMenu = (props) => {
   const { container, buttonHolder, button, line } = styles;
@@ -10,14 +10,18 @@ const NavMenu = (props) => {
         style={buttonHolder}
         onPress={() => updatePane('about')}
       >
-        <Image source={require("../images/about.png")} style={button} />
+        <Text style={button}>
+        About
+        </Text>
       </TouchableOpacity>
       <View style={line} />
       <TouchableOpacity
         style={buttonHolder}
         onPress={() => updatePane('work')}
       >
-        <Image source={require("../images/work.png")} style={button} />
+        <Text style={button}>
+        Code Samples
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -42,11 +46,17 @@ const styles = StyleSheet.create({
     maxHeight: "30%",
     padding: 20,
     minHeight: "20%",
-    zIndex: 1
+    zIndex: 1,
+    display: 'flex',
+    alignItems:'center',
+    justifyContent:'center'
   },
   button: {
+    textAlign:'center',
     width: "100%",
-    height: "100%",
+    height: 50,
+    fontSize: 38,
+    color: 'white',
     resizeMode: "contain",
   },
   line: {
