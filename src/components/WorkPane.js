@@ -15,10 +15,9 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Linking from "expo-linking";
 
 const Sample = (props) => {
-  const { title, image, icon, link } = props;
+  const { title, icon, link } = props;
   const {
     sample,
-    sampleImage,
     sampleIcon,
     sampleTitle,
     linkStyle,

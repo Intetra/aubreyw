@@ -8,12 +8,19 @@ const NavMenu = (props) => {
     <View style={container}>
       <TouchableOpacity
         style={buttonHolder}
-        onPress={() => updatePane("about")}
-      >
+        onPress={() => updatePane("home")}>
+        <Text style={button}>Home</Text>
+      </TouchableOpacity>
+      <View style={line} />
+      <TouchableOpacity
+        style={buttonHolder}
+        onPress={() => updatePane("about")}>
         <Text style={button}>About</Text>
       </TouchableOpacity>
       <View style={line} />
-      <TouchableOpacity style={buttonHolder} onPress={() => updatePane("work")}>
+      <TouchableOpacity
+        style={buttonHolder}
+        onPress={() => updatePane("work")}>
         <Text style={button}>Work</Text>
       </TouchableOpacity>
     </View>

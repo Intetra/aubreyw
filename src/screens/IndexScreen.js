@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
 import Background from "../components/Background";
-import InfoPane from "../components/InfoPane";
+import SplashPane from "../components/SplashPane";
 import BottomNav from "../components/BottomNav";
 import NavMenu from "../components/NavMenu";
 import WorkPane from "../components/WorkPane";
+import AboutPane from "../components/AboutPane"
 
 const IndexScreen = () => {
   const { container, background, navMenu, middle, bottomNav } = styles;
-  const [pane, setPane] = useState("about");
+  const [pane, setPane] = useState("home");
 
   const updatePane = (prop) => {
     setPane(prop);
@@ -16,12 +17,14 @@ const IndexScreen = () => {
 
   const paneHandler = (pane) => {
     if (pane) {
-      if (pane === "about") {
-        return <InfoPane style={middle} />;
+      if (pane === "home") {
+        return <SplashPane style={middle} />;
       } else if (pane === "work") {
         return <WorkPane updatePane={updatePane} style={middle} />;
       } else if (pane === "menu") {
         return <NavMenu updatePane={updatePane} style={navMenu} />;
+      } else if (pane === "about") {
+        return <AboutPane updatePane={updatePane} style={middle} />;
       }
     } else {
       return console.log("No Pane");

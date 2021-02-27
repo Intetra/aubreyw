@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Image } from "react-native";
 
-const InfoPane = () => {
+const SplashPane = () => {
   const {
     container,
     splashImage,
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InfoPane;
+export default SplashPane;
