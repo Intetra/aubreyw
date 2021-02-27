@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    zIndex: 1
+    zIndex: 1,
   },
   iconHolder: {
     display: "flex",

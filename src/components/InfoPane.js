@@ -4,15 +4,13 @@ import { View, StyleSheet, Image } from "react-native";
 const InfoPane = () => {
   const {
     container,
-    titleLine,
     splashImage,
     splashImageHolder,
     nameLine,
   } = styles;
   return (
     <View style={container}>
-      <Image source={require("../images/nameLine.png")} style={nameLine} />
-      <Image source={require("../images/titleLine.png")} style={titleLine} />
+      <Image source={require("../images/splash.svg")} style={nameLine} />
       <View style={splashImageHolder}>
         <Image source={require("../images/selfie.png")} style={splashImage} />
       </View>
@@ -32,12 +30,6 @@ const styles = StyleSheet.create({
     height: 120,
     width: "60%",
     minWidth: 120,
-    resizeMode: "contain",
-  },
-  titleLine: {
-    height: 55,
-    width: "50%",
-    minWidth: 100,
     resizeMode: "contain",
   },
   splashImage: {

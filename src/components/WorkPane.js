@@ -11,6 +11,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Linking from "expo-linking";
 
 const Sample = (props) => {
@@ -23,28 +24,21 @@ const Sample = (props) => {
     linkStyle,
     linkHolderStyle,
   } = styles;
-  const imageHandler = () => {
-    if (image) {
-      return <Image source={image} style={sampleImage} />;
-    } else if (icon) {
-      if (icon === "blog") {
-        return (
-          <FontAwesome5
-            style={sampleIcon}
-            name="blog"
-            size={48}
-            color="white"
-          />
-        );
-      } else if (icon === "api") {
-        return (
-          <AntDesign style={sampleIcon} name="API" size={48} color="white" />
-        );
-      } else if (icon === "flaskBlog") {
-        return (
-          <Entypo style={sampleIcon} name="lab-flask" size={48} color="white" />
-        );
-      }
+  const iconHandler = () => {
+    if (icon === "blog") {
+      return (
+        <FontAwesome5 style={sampleIcon} name="blog" size={48} color="white" />
+      );
+    } else if (icon === "api") {
+      return (
+        <AntDesign style={sampleIcon} name="API" size={48} color="white" />
+      );
+    } else if (icon === "flaskBlog") {
+      return (
+        <Entypo style={sampleIcon} name="lab-flask" size={48} color="white" />
+      );
+    } else if (icon === "website") {
+      return <MaterialCommunityIcons style={sampleIcon} name="web" size={48} color="white" />;
     }
   };
 
@@ -63,7 +57,7 @@ const Sample = (props) => {
   return (
     <View style={sample}>
       <Text style={sampleTitle}>{title}</Text>
-      {imageHandler()}
+      {iconHandler()}
       <TouchableOpacity style={linkHolderStyle} onPress={() => linkHandler()}>
         <Text style={linkStyle}>Github</Text>
       </TouchableOpacity>
@@ -94,12 +88,8 @@ const WorkPane = () => {
         contentContainerStyle={contentContainer}
         style={scrollView}
       >
-        <Image source={require("../images/codeSamples.png")} style={topTitle} />
-        <Sample
-          title="This website"
-          image={require("../images/ipad/moon.png")}
-          link="website"
-        />
+        <Image source={require("../images/codeSamples.svg")} style={topTitle} />
+        <Sample title="This website" icon="website" link="website" />
         <Sample title="Custom Express API" icon="api" link="apiLink" />
         <Sample title="React Native Blog" icon="blog" link="rnBlogLink" />
         <Sample
@@ -120,7 +110,7 @@ const WorkPane = () => {
 const styles = StyleSheet.create({
   border: {
     alignSelf: "center",
-    marginBottom:60,
+    marginBottom: 60,
     borderWidth: 5,
     borderRadius: 30,
     borderColor: "white",
@@ -160,8 +150,8 @@ const styles = StyleSheet.create({
   scrollView: {
     position: "absolute",
     height: 500,
-    width: '100%',
-    top: 10
+    width: "100%",
+    top: 10,
   },
   contentContainer: {
     justifyContent: "center",
@@ -181,14 +171,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 30,
-    padding: 10
+    padding: 10,
   },
   sampleTitle: {
     color: "white",
     fontSize: 36,
     textAlign: "center",
-    width: '90%',
-    flexShrink: 1
+    width: "90%",
+    flexShrink: 1,
   },
   sampleImage: {
     width: "100%",
@@ -202,7 +192,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     backgroundColor: "rgba(0,0,0,0.25)",
     padding: 10,
-    borderRadius: 20
+    borderRadius: 20,
   },
   linkStyle: {
     fontSize: 32,

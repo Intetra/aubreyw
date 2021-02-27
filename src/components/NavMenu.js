@@ -3,25 +3,18 @@ import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 const NavMenu = (props) => {
   const { container, buttonHolder, button, line } = styles;
-  const { updatePane } = props
+  const { updatePane } = props;
   return (
     <View style={container}>
       <TouchableOpacity
         style={buttonHolder}
-        onPress={() => updatePane('about')}
+        onPress={() => updatePane("about")}
       >
-        <Text style={button}>
-        About
-        </Text>
+        <Text style={button}>About</Text>
       </TouchableOpacity>
       <View style={line} />
-      <TouchableOpacity
-        style={buttonHolder}
-        onPress={() => updatePane('work')}
-      >
-        <Text style={button}>
-          Work
-        </Text>
+      <TouchableOpacity style={buttonHolder} onPress={() => updatePane("work")}>
+        <Text style={button}>Work</Text>
       </TouchableOpacity>
     </View>
   );
@@ -29,7 +22,7 @@ const NavMenu = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
+    position: "absolute",
     backgroundColor: "black",
     backgroundColor: "rgba( 0, 0, 0, 0.5)",
     width: "100%",
@@ -38,26 +31,26 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    zIndex: 0
+    zIndex: 0,
   },
   buttonHolder: {
-    position: 'relative',
+    position: "relative",
     width: "50%",
     maxHeight: "30%",
     padding: 20,
     minHeight: "20%",
     zIndex: 1,
-    display: 'flex',
-    alignItems:'center',
-    justifyContent:'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   button: {
-    textAlign:'center',
+    textAlign: "center",
     width: "100%",
     height: 50,
     fontSize: 38,
-    color: 'white',
-    flexWrap:'nowrap'
+    color: "white",
+    flexWrap: "nowrap",
   },
   line: {
     borderBottomColor: "white",

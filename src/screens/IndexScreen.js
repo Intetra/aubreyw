@@ -17,42 +17,30 @@ const IndexScreen = () => {
   const paneHandler = (pane) => {
     if (pane) {
       if (pane === "about") {
-        return <InfoPane style={middle} />
+        return <InfoPane style={middle} />;
       } else if (pane === "work") {
-        return (
-          <WorkPane
-            updatePane={updatePane}
-            style={middle}
-          />
-        )
+        return <WorkPane updatePane={updatePane} style={middle} />;
       } else if (pane === "menu") {
-        return (
-          <NavMenu
-            updatePane={updatePane}
-            style={navMenu}
-          />
-        )
+        return <NavMenu updatePane={updatePane} style={navMenu} />;
       }
     } else {
-      return console.log('No Pane')
+      return console.log("No Pane");
     }
   };
 
-  const webWidth = Dimensions.get('window').width
-  const webHeight = Dimensions.get('window').height
-  const webDimensions = {
-    height: webHeight,
-    width: webWidth
-  }
   return (
-    <View style={[container, webDimensions]}>
+    <View
+      style={[
+        container,
+        {
+          width: Dimensions.get("window").width,
+          height: Dimensions.get("window").height,
+        },
+      ]}
+    >
       <Background style={background} />
       {paneHandler(pane)}
-      <BottomNav
-        updatePane={updatePane}
-        style={bottomNav}
-
-      />
+      <BottomNav updatePane={updatePane} style={bottomNav} />
     </View>
   );
 };
@@ -60,10 +48,10 @@ const IndexScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: '100%',
+    height: "100%",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   background: {
     position: "absolute",
@@ -76,16 +64,16 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   bottomNav: {
-    position:'absolute',
+    position: "absolute",
     elevation: 1,
     zIndex: 1,
-    bottom: 0
+    bottom: 0,
   },
   navMenu: {
-    position: 'absolute',
+    position: "absolute",
     elevation: 2,
-    zIndex: 2
-  }
+    zIndex: 2,
+  },
 });
 
 export default IndexScreen;

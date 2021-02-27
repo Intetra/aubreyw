@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import { StyleSheet, Animated, Easing } from 'react-native'
+import React, { useState, useEffect } from "react";
+import { Animated, Easing } from "react-native";
 
 export default function spinningImage() {
-
   const [spinAnim, setSpinAnim] = useState(new Animated.Value(0));
   const spin = spinAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
+    outputRange: ["0deg", "360deg"],
   });
 
-    useEffect(() => {
-      Animated.loop(
-        Animated.timing(spinAnim, {
-          toValue: 1,
-          duration: 120000,
-          easing: Easing.linear,
-          useNativeDriver: true,
-        }),
-      ).start();
-    });
-  return spin
+  useEffect(() => {
+    Animated.loop(
+      Animated.timing(spinAnim, {
+        toValue: 1,
+        duration: 120000,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      })
+    ).start();
+  });
+  return spin;
 }
 
 /*
