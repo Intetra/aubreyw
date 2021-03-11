@@ -12,6 +12,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Feather } from '@expo/vector-icons';
 import * as Linking from "expo-linking";
 
 const Sample = (props) => {
@@ -39,6 +40,9 @@ const Sample = (props) => {
     } else if (icon === "website") {
       return <MaterialCommunityIcons style={sampleIcon} name="web" size={48} color="white" />;
     }
+    else if (icon === "habit") {
+      return <Feather style={sampleIcon} name="user-check" size={48} color="white" />;
+    }
   };
 
   const linkHandler = () => {
@@ -50,6 +54,8 @@ const Sample = (props) => {
       return Linking.openURL("https://github.com/Intetra/blogs");
     } else if (link === "flaskBlogLink") {
       return Linking.openURL("https://github.com/Intetra/flask-blog-app");
+    } else if (link === "habitLink") {
+      return Linking.openURL("https://github.com/Intetra/habitHelper");
     } else return null;
   };
 
@@ -58,7 +64,7 @@ const Sample = (props) => {
       <Text style={sampleTitle}>{title}</Text>
       {iconHandler()}
       <TouchableOpacity style={linkHolderStyle} onPress={() => linkHandler()}>
-        <Text style={linkStyle}>Github</Text>
+        <Text style={linkStyle}>View on Github</Text>
       </TouchableOpacity>
     </View>
   );
@@ -88,6 +94,7 @@ const WorkPane = () => {
         style={scrollView}
       >
         <Image source={require("../images/codeSamples.svg")} style={topTitle} />
+        <Sample title="Habit Helper" icon="habit" link="habitLink" />
         <Sample title="This website" icon="website" link="website" />
         <Sample title="Custom Express API" icon="api" link="apiLink" />
         <Sample title="React Native Blog" icon="blog" link="rnBlogLink" />
@@ -188,14 +195,20 @@ const styles = StyleSheet.create({
     marginVertical: 40,
   },
   linkHolderStyle: {
+    width: '50%',
     backgroundColor: "black",
     backgroundColor: "rgba(0,0,0,0.25)",
     padding: 10,
     borderRadius: 20,
+    borderWidth: 4,
+    borderColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   linkStyle: {
-    fontSize: 32,
+    fontSize: 28,
     color: "white",
+    textAlign: 'center'
   },
 });
 
